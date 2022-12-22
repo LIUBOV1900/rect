@@ -1,0 +1,92 @@
+import pygame, sys
+from pygame.locals import QUIT
+
+pygame.init()
+
+back = (125, 195, 140) 
+
+# оформление   экрана
+
+mw = pygame.display.set_mode((400, 300)) 
+pygame.display.set_caption('ПРИВЕТ НАЧАЛО')
+mw.fill(back)
+
+#  создание прямоугольников
+kv1 = pygame.Rect(100, 100, 120, 50)
+kv2 = pygame.Rect(200, 200, 200, 100)
+
+#  загрузка   картинок
+spr=pygame.image.load('D6.png') 
+#spr1=pygame.image.load('green.png') 
+spr1 = pygame.transform.scale(pygame.image.load('green.png'), (55, 55))
+
+spr = pygame.transform.scale(pygame.image.load('D6.png'), (100, 100))
+
+#  создание надписей (цвета, шрифта)
+
+font1 = pygame.font.Font(None, 50)
+image1 = font1.render("ПИТОН", True, "yellow")
+
+
+text_color="red"
+text = "ПРИВЕТ"
+font2 = pygame.font.Font(None, 100)
+image = font2.render(text, True, text_color)
+
+
+
+font3 = pygame.font.SysFont('verdena', 30)
+image3 = font3.render("Новый год", True, "green")
+
+
+image1 = pygame.Surface((50, 50), pygame.SRCALPHA)
+pygame.draw.circle(image1, (0,255,0), (25, 25), 25)
+
+
+
+'''
+class TextArea():
+   def __init__(self, x=0, y=0, width=10, height=10, color=None):
+       """ область: прямоугольник в нужном месте и нужного цвета """
+       #запоминаем прямоугольник:
+       self.rect = pygame.Rect(x, y, width, height)
+       #цвет заливки - или переданный параметр, или общий цвет фона
+       self.fill_color = color
+
+   #установить текст
+   def set_text(self, text, fsize=12, text_color=BLACK):
+       self.text = text
+       self.image = pygame.font.Font(None, fsize).render(text, True, text_color)
+      
+   #отрисовка прямоугольника с текстом
+   def draw(self, shift_x=0, shift_y=0):
+       pygame.draw.rect(mw, self.fill_color, self.rect)
+       mw.blit(self.image, (self.rect.x + shift_x, self.rect.y + shift_y))   '''
+
+
+
+
+clock = pygame.time.Clock()
+while 1:
+    # отображение прямоугольников   на  экране
+
+    pygame.draw.circle(image1, (0,255,0), (100, 100), 25)
+    
+    pygame.draw.rect(mw, (140,120,200), kv1)
+    pygame.draw.rect(mw, (250,150,250), kv2)
+    pygame.draw.rect(mw, (128,255,200), kv2, 5)
+
+     #  отображение  текстов
+    mw.blit(image,(100,100))
+    mw.blit(image1,(210,210))
+    mw.blit(image,(200,200))
+    mw.blit(image3,(110,110))  
+
+    
+     # отображение  спрайто  на  экране
+    mw.blit(spr,(100,200))
+    mw.blit(spr1,(20,20))
+    
+    
+    pygame.display.update()
+    clock.tick(20)    
